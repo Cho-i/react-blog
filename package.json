@@ -2,7 +2,7 @@
   "name": "blog",
   "version": "0.1.0",
   "private": true,
-  "hompage": "https://cho-i.github.io/react-blog",
+  "hompage": "https://cho-i.github.io/react-blog/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
