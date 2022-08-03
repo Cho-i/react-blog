@@ -48,14 +48,6 @@ function App() {
           입력값변경(e.target.value)
         }} />
         <button onClick={(e)=>{
-          let newCopy = [...글제목]
-          newCopy.unshift(입력값)
-          입력값 !== '' ? 글제목변경(newCopy) : alert('내용을 입력해 주세요!')
-
-          let likeCopy = [...따봉]
-          likeCopy.unshift(0)
-          따봉변경(likeCopy)
-
           let today = new Date()
           let year = today.getFullYear()
           let month = ('0' + (today.getMonth() + 1)).slice(-2)
@@ -64,7 +56,28 @@ function App() {
 
           let dateCopy = [...date]
           dateCopy.unshift(dateString)
-          setDate(dateCopy)
+          //setDate(dateCopy)
+
+          let likeCopy = [...따봉]
+          likeCopy.unshift(0)
+          //따봉변경(likeCopy)
+
+          let newCopy = [...글제목]
+          newCopy.unshift(입력값)
+          //글제목변경(newCopy)
+
+          function add(){
+            setDate(dateCopy)
+            따봉변경(likeCopy)
+            글제목변경(newCopy)
+          }
+
+          
+          입력값 !== '' ? add() : alert('내용을 입력해 주세요!')
+          
+          
+
+
         }}>글발행</button>        
       </div>
 
