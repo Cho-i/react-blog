@@ -7,7 +7,7 @@ function App() {
   let [글제목, 글제목변경] = useState(['남자코트 추천','강남 우동맛집','리액트 독학']);
   let [따봉, 따봉변경] = useState([0,1,2]);
   let [modal, setModal] = useState(false);
-  let [title, setTitle] = useState(0);
+  let [count, setCount] = useState(0);
   let [입력값, 입력값변경] = useState('');
   let [date, setDate] = useState(['2022-07-10','2022-07-09','2022-07-08']);
 
@@ -24,7 +24,7 @@ function App() {
           <div className="list" key={i}>
             <h4 onClick={() => {
               setModal(!modal)
-              setTitle(i)
+              setCount(i)
             }}>{a}<span onClick={(e) => {
               e.stopPropagation();
               let likeCopy = [...따봉]
@@ -44,7 +44,7 @@ function App() {
       }
 
       <div className="box">
-        <input type="text" onChange={(e)=>{
+        <input type="text" value={입력값} onChange={(e)=>{
           입력값변경(e.target.value)
         }} />
         <button onClick={(e)=>{
@@ -70,20 +70,17 @@ function App() {
             setDate(dateCopy)
             따봉변경(likeCopy)
             글제목변경(newCopy)
+            입력값변경('')
           }
 
-          
           입력값 !== '' ? add() : alert('내용을 입력해 주세요!')
           
-          
-
-
         }}>글발행</button>        
       </div>
 
       {
         //조건식 ? 조건식 참일 때 실행할 코드 : 조건식 거짓일 때 실행할 코드
-        (modal == true) ? <Modal title={title} 글제목={글제목} 글제목변경={글제목변경} setModal={setModal} /> : null
+        (modal == true) ? <Modal count={count} 글제목={글제목} 글제목변경={글제목변경} setModal={setModal} date={date} /> : null
       }
 
     </div>
@@ -96,8 +93,8 @@ function Modal(props) {
       e.target == e.currentTarget ? props.setModal(false) : props.setModal(true)
     }}>
       <div className="modal-inner">
-        <h4>{props.글제목[props.title]}</h4>
-        <p>날짜</p>
+        <h4>{props.글제목[props.count]}</h4>
+        <p>{props.date[props.count]}</p>
         <p>상세내용</p>
       </div>
     </div>
